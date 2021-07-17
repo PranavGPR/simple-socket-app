@@ -22,4 +22,8 @@ io.on("connection", (socket) => {
   socket.on("messageToServer", (data) => {
     console.log(data);
   });
+
+  socket.on("newMessageToServer", (data) => {
+    io.emit("messageToClients", { message: data.message });
+  });
 });
